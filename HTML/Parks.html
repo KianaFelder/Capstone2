@@ -38,35 +38,21 @@
   <h2> Wildness Whispers Park Search</h2>
 <!----Buttons-->
 <h5>Select options</h5>
-<div class="row">
-  <div class="col">
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="locationSearch">
-      <label class="form-check-label" for="flexRadioDefault1">
-        Location
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="parkTypeSearch" checked>
-      <label class="form-check-label" for="flexRadioDefault2">
-        Park Type 
-      </label>
-    </div>
-  </div>
-  <!---Just an image-->
-  <div class="col-5">
-    <img src="images/Wildness Whispers transparent.png">
-  </div>
+<button type="button" class="btn btn-info" id="searchBtn">Search</button>
   <!-----DropDowns-->
   <h5>Dropdown</h5>
-  <div class="col">
+  <div class="col-5">
     <select class="form-select" id="locationDropDown">
     </select>
 
-    <select class="form-select" id="parktypeDropDown">
+    <select class="form-select" id="parkTypeDropDown">
     </select>
   </div>
 </div>
+  <!---Just an image-->
+  <div class="col">
+    <img src="images/Wildness Whispers transparent.png">
+  </div>
 <!----Display Card-->
 <div class="card" style="background-color: darkolivegreen;" id="displayParks">
 </div>
