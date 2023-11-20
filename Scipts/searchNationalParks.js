@@ -129,8 +129,7 @@ function parkInfoContainer(parksList) {
             
             getAccordionItem.appendChild(flushCollapseDiv);
         });
-    }
-};
+    };
 // function parkInfoContainer(parksList) {
 //     parksList.forEach(park => {
 //         let getAccordionItem = createAccordionItem(park);
