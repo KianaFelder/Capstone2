@@ -9,18 +9,30 @@ window.onload = init;
 function init(){
     const searchBtn = document.getElementById
     searchBtn.onclick = searchBtnClicked;
-}
+};
 
-function displayLocationDropDown() {
-   // let listOfParks = getParkInfo();
+// function displayLocationDropDown() {
+//    // let listOfParks = getParkInfo();
 
-    for (let state of locationsArray){
-        let option = document.createElement("option");
-        option.value = state;
-        option.innerText; 
-        locationDropDown.appendChild(option);
+//     for (let state of locationsArray){
+//         let option = document.createElement("option");
+//         option.value = state;
+//         option.innerText; 
+//         locationDropDown.appendChild(option);
+//     }
+// };
+
+function populateLocationDropdown() {
+
+    let parksArray = getParkInfoArray();
+
+    for (let park of parksArray) {
+        let newOption = new Option(park.State);
+        locationDropdown.appendChild(newOption);
     }
-}
+
+};
+
 
 function displayParkTypeDropDown() {
     for (let parkTypes of parkTypesArray){
@@ -29,12 +41,45 @@ function displayParkTypeDropDown() {
         option.innerText;
         parkTypeDropDown.appendChild(option);
     }
-}
+};
+
+
+
+function getParkInfo() {
+    
+    let locationInfo = [];
+    for (let parkInfo of nationalParksArray) {
+        if (locationInfo.includes(parkInfo.State) != true) {
+            locationInfo.push(parkInfo.State);
+        }
+    }
+    
+    locationInfo.sort();
+    
+    // I changed it from return locationInfo to nationalParksArray so that it would
+    //return all parks and not just unique states.
+    return nationalParksArray;
+};
+
+function getParkTypeData() {
+    let uniqueParkTypes = [];
+    
+    for (let type of parkTypesArray) {
+        if (!uniqueParkTypes.includes(type)) {
+            uniqueParkTypes.push(type);
+        }
+    }
+    
+    uniqueParkTypes.sort();
+    
+    return parkTypesArray;
+};
+
 
 function searchBtnClicked () {
     displayParks.innerHTML = "";
     let locationSelection = locationDropDown.value;
-
+    
     let parkTypeSelection = parkTypeDropDown.value;
     if (locationSelection) {
         let searchInfo = nationalParksArray.filter(park => park.State == locationSelection);
@@ -49,7 +94,7 @@ function searchBtnClicked () {
             }
         }
     }
-}
+};
 
 
 function getDisplayParksContainer(location) {
