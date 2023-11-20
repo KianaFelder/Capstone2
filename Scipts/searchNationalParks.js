@@ -45,19 +45,33 @@ function dropdownReset(dropdown, defaultText, dataArray) {
 }
 
 // Function to handle dropdown selection
-function dropdownSelector() {
+function dropdownSelection() {
     clearContainer();
 
     if (locationSearchBtn.checked) {
-        let stateOfLocation = locationDropdown.value;
-        let parkList = filterParksByState(stateOfLocation);
-        parkInfoDisplay(parkList);
+        let stateSelection = locationDropdown.value;
+        let parksList = filterParksByState(stateSelection);
+        parkInfoContainer(parksList);
     } else if (parkTypeSearchBtn.checked) {
-        let parkTypeSelector = parkTypeDropdown.value;
-        let parkTypeList = filterParksByType(parkTypeSelector);
-        parkInfoDisplay(parkTypeList);
+        let parkTypeSelection = parkTypeDropdown.value;
+        let typeList = filterParksByType(parkTypeSelection);
+        parkInfoContainer(typeList);
     }
 }
+
+// function dropdownSelector() {
+//     clearContainer();
+
+//     if (locationSearchBtn.checked) {
+//         let stateOfLocation = locationDropdown.value;
+//         let parkList = filterParksByState(stateOfLocation);
+//         parkInfoDisplay(parkList);
+//     } else if (parkTypeSearchBtn.checked) {
+//         let parkTypeSelector = parkTypeDropdown.value;
+//         let parkTypeList = filterParksByType(parkTypeSelector);
+//         parkInfoDisplay(parkTypeList);
+//     }
+// }
 
 // Functions to filter parks by state or type
 function filterParksByState(state) {
@@ -71,10 +85,17 @@ function filterParksByType(type) {
 // Function to create park info container
 function parkInfoContainer(parksList) {
     parksList.forEach(park => {
-        let getAccordionItemDiv = createAccordionItem(park);
-        displayParksContainer.appendChild(getAccordionItemDiv);
+        let getAccordionItem = createAccordionItem(park);
+        displayParksContainer.appendChild(getAccordionItem); // Replace parkContainer with displayParksContainer
     });
 }
+
+// function parkInfoContainer(parksList) {
+//     parksList.forEach(park => {
+//         let getAccordionItemDiv = createAccordionItem(park);
+//         displayParksContainer.appendChild(getAccordionItemDiv);
+//     });
+// }
 
 // Function to create accordion item
 function createAccordionItem(park) {

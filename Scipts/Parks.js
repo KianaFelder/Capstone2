@@ -1,157 +1,157 @@
-"use strict";
+// "use strict";
 
-const displayParks = document.getElementById("displayParks");
-const locationDropDown = document.getElementById("locationDropDown");
-const parkTypeDropDown = document.getElementById("parktypeDropDown");
+// const displayParks = document.getElementById("displayParks");
+// const locationDropDown = document.getElementById("locationDropDown");
+// const parkTypeDropDown = document.getElementById("parktypeDropDown");
 
-window.onload = init;
+// window.onload = init;
 
-function init(){
-    const searchBtn = document.getElementById
-    searchBtn.onclick = searchBtnClicked;
-};
+// function init(){
+//     const searchBtn = document.getElementById
+//     searchBtn.onclick = searchBtnClicked;
+// };
 
-// function displayLocationDropDown() {
-//    // let listOfParks = getParkInfo();
+// // function displayLocationDropDown() {
+// //    // let listOfParks = getParkInfo();
 
-//     for (let state of locationsArray){
+// //     for (let state of locationsArray){
+// //         let option = document.createElement("option");
+// //         option.value = state;
+// //         option.innerText; 
+// //         locationDropDown.appendChild(option);
+// //     }
+// // };
+
+// function populateLocationDropdown() {
+
+//     let parksArray = getParkInfoArray();
+
+//     for (let park of parksArray) {
+//         let newOption = new Option(park.State);
+//         locationDropdown.appendChild(newOption);
+//     }
+
+// };
+
+
+// function displayParkTypeDropDown() {
+//     for (let parkTypes of parkTypesArray){
 //         let option = document.createElement("option");
-//         option.value = state;
-//         option.innerText; 
-//         locationDropDown.appendChild(option);
+//         option.value = parkTypes;
+//         option.innerText;
+//         parkTypeDropDown.appendChild(option);
 //     }
 // };
 
-function populateLocationDropdown() {
-
-    let parksArray = getParkInfoArray();
-
-    for (let park of parksArray) {
-        let newOption = new Option(park.State);
-        locationDropdown.appendChild(newOption);
-    }
-
-};
 
 
-function displayParkTypeDropDown() {
-    for (let parkTypes of parkTypesArray){
-        let option = document.createElement("option");
-        option.value = parkTypes;
-        option.innerText;
-        parkTypeDropDown.appendChild(option);
-    }
-};
-
-
-
-function getParkInfo() {
+// function getParkInfo() {
     
-    let locationInfo = [];
-    for (let parkInfo of nationalParksArray) {
-        if (locationInfo.includes(parkInfo.State) != true) {
-            locationInfo.push(parkInfo.State);
-        }
-    }
+//     let locationInfo = [];
+//     for (let parkInfo of nationalParksArray) {
+//         if (locationInfo.includes(parkInfo.State) != true) {
+//             locationInfo.push(parkInfo.State);
+//         }
+//     }
     
-    locationInfo.sort();
+//     locationInfo.sort();
     
-    // I changed it from return locationInfo to nationalParksArray so that it would
-    //return all parks and not just unique states.
-    return nationalParksArray;
-};
+//     // I changed it from return locationInfo to nationalParksArray so that it would
+//     //return all parks and not just unique states.
+//     return nationalParksArray;
+// };
 
-function getParkTypeData() {
-    let uniqueParkTypes = [];
+// function getParkTypeData() {
+//     let uniqueParkTypes = [];
     
-    for (let type of parkTypesArray) {
-        if (!uniqueParkTypes.includes(type)) {
-            uniqueParkTypes.push(type);
-        }
-    }
+//     for (let type of parkTypesArray) {
+//         if (!uniqueParkTypes.includes(type)) {
+//             uniqueParkTypes.push(type);
+//         }
+//     }
     
-    uniqueParkTypes.sort();
+//     uniqueParkTypes.sort();
     
-    return parkTypesArray;
-};
+//     return parkTypesArray;
+// };
 
 
-function searchBtnClicked () {
-    displayParks.innerHTML = "";
-    let locationSelection = locationDropDown.value;
+// function searchBtnClicked () {
+//     displayParks.innerHTML = "";
+//     let locationSelection = locationDropDown.value;
     
-    let parkTypeSelection = parkTypeDropDown.value;
-    if (locationSelection) {
-        let searchInfo = nationalParksArray.filter(park => park.State == locationSelection);
-        for (let park of searchInfo) {
-            getDisplayParksContainer(park);
-            if(parkTypeSelection) {
-                for (let park of nationalParksArray) {
-                    if (park.LocationEND.includes(parkTypeSelection)) {
-                        getDisplayParksContainer(park,parkTypeSelection);
-                    }
-                }
-            }
-        }
-    }
-};
+//     let parkTypeSelection = parkTypeDropDown.value;
+//     if (locationSelection) {
+//         let searchInfo = nationalParksArray.filter(park => park.State == locationSelection);
+//         for (let park of searchInfo) {
+//             getDisplayParksContainer(park);
+//             if(parkTypeSelection) {
+//                 for (let park of nationalParksArray) {
+//                     if (park.LocationEND.includes(parkTypeSelection)) {
+//                         getDisplayParksContainer(park,parkTypeSelection);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// };
 
 
-function getDisplayParksContainer(location) {
+// function getDisplayParksContainer(location) {
 
-    let accordionItemDiv = document.createElement("div");
-    accordionItemDiv.className = "accordion-item";
+//     let accordionItemDiv = document.createElement("div");
+//     accordionItemDiv.className = "accordion-item";
 
-    displayParks.appendChild(accordionItemDiv);
+//     displayParks.appendChild(accordionItemDiv);
 
-    let accordionHeader = document.createElement("h2");
-    accordionHeader.className = "accordion-header";
+//     let accordionHeader = document.createElement("h2");
+//     accordionHeader.className = "accordion-header";
 
-    accordionItemDiv.appendChild(accordionHeader);
+//     accordionItemDiv.appendChild(accordionHeader);
 
-    let btn = document.createElement("button");
-    btn.className = "accordion-button collapsed";
-    btn.type = "button";
-    btn.setAttribute("data-bs-toggle", "collapse");
+//     let btn = document.createElement("button");
+//     btn.className = "accordion-button collapsed";
+//     btn.type = "button";
+//     btn.setAttribute("data-bs-toggle", "collapse");
 
-    let targetId = "flush-collapse-" + location.LocationID;
+//     let targetId = "flush-collapse-" + location.LocationID;
 
-    btn.setAttribute("data-bs-target", "#" + targetId);
-    btn.setAttribute("aria-expanded", "false");
-    btn.setAttribute("aria-controls", targetId);
+//     btn.setAttribute("data-bs-target", "#" + targetId);
+//     btn.setAttribute("aria-expanded", "false");
+//     btn.setAttribute("aria-controls", targetId);
 
-    let btnTextNode = document.createTextNode(location.LocationName);
-    btn.appendChild(btnTextNode);
+//     let btnTextNode = document.createTextNode(location.LocationName);
+//     btn.appendChild(btnTextNode);
 
-    accordionHeader.appendChild(btn);
+//     accordionHeader.appendChild(btn);
 
-    let flushCollapseDiv = document.createElement("div");
-    flushCollapseDiv.id = targetId;
-    flushCollapseDiv.className = "accordion-collapse collapse"
-    flushCollapseDiv.setAttribute("data-bs-parent", "#displayPark");
+//     let flushCollapseDiv = document.createElement("div");
+//     flushCollapseDiv.id = targetId;
+//     flushCollapseDiv.className = "accordion-collapse collapse"
+//     flushCollapseDiv.setAttribute("data-bs-parent", "#displayPark");
 
-    let accordionBody = document.createElement("div");
-    accordionBody.className = "accordion-body";
+//     let accordionBody = document.createElement("div");
+//     accordionBody.className = "accordion-body";
 
-    let accordionBodyHTML = `
-        <p><strong>Location ID:</strong> ${location.LocationID}</p>
-        <p><strong>Location Name:</strong> ${location.LocationName}</p>
-        <p><strong>Address:</strong> ${location.Address}</p>
-        <p><strong>City:</strong> ${location.City}</p>
-        <p><strong>State:</strong> ${location.State}</p>
-        <p><strong>Zip Code:</strong> ${location.ZipCode}</p>
-        <p><strong>Phone:</strong> ${location.Phone}</p>
-        <p><strong>Fax:</strong> ${location.Fax}</p>
-        <p><strong>Latitude:</strong> ${location.Latitude}</p>
-        <p><strong>Longitude:</strong> ${location.Longitude}</p>
-    `;
-    accordionBody.innerHTML = accordionBodyHTML;
+//     let accordionBodyHTML = `
+//         <p><strong>Location ID:</strong> ${location.LocationID}</p>
+//         <p><strong>Location Name:</strong> ${location.LocationName}</p>
+//         <p><strong>Address:</strong> ${location.Address}</p>
+//         <p><strong>City:</strong> ${location.City}</p>
+//         <p><strong>State:</strong> ${location.State}</p>
+//         <p><strong>Zip Code:</strong> ${location.ZipCode}</p>
+//         <p><strong>Phone:</strong> ${location.Phone}</p>
+//         <p><strong>Fax:</strong> ${location.Fax}</p>
+//         <p><strong>Latitude:</strong> ${location.Latitude}</p>
+//         <p><strong>Longitude:</strong> ${location.Longitude}</p>
+//     `;
+//     accordionBody.innerHTML = accordionBodyHTML;
 
-    flushCollapseDiv.appendChild(accordionBody);
+//     flushCollapseDiv.appendChild(accordionBody);
 
-    accordionItemDiv.appendChild(flushCollapseDiv);
+//     accordionItemDiv.appendChild(flushCollapseDiv);
 
-};
+// };
 
 // "use strict";
 
