@@ -43,7 +43,7 @@ function displayParkTypeDropdown() {
 
     for (let i = 0; i < parkTypesArray.length; i++) {
         let parkType = parkTypesArray[i];
-        let option = new Option(parkType.name);
+        let option = new Option(parkType);
         parkTypeDropdown.appendChild(option);
     }
 
@@ -59,7 +59,7 @@ function dropdownSelector() {
         parkInfoContainer(listOfParks);
     } else if (parkTypeSearchBtn.checked) {
         let selectedParkType = parkTypeDropdown.value;
-        let listOfTypesOfParks = nationalParksArray.filter(nationalPark => nationalPark.LocationName === selectedParkType);
+        let listOfTypesOfParks = nationalParksArray.filter(nationalPark => nationalPark.LocationName.includes(selectedParkType));
         typeInfoContainer(listOfTypesOfParks);
     }
     
