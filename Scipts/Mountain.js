@@ -13,26 +13,26 @@ function init() {
 
 // Functions to display dropdowns
 function displayMountainDropdown() {
-    for (let i = 0; i < mountainsArray.length; i++) {
-        let optionMountains = mountainsArray[i];
-        let option = new Option(optionMountains);
-        mountainDropdown.appendChild(option);
-    }
+    let mountainDropdown = document.getElementById("mountainDropdown");
 
-}
+    mountainsArray.forEach(mt =>{ let newOption = new Option(mt.name);
+
+        mountainDropdown.appendChild(newOption);
+    })
+};
 
 
 // Function to handle dropdown selection
 function dropdownSelector() {
     let mtSelection = mountainDropdown.value;
     for( let j = 0; j < mountainsArray.length; j++) {
-        if (mtSelection = mountainsArray.[j].name) {
+        if (mtSelection === mountainsArray[j].name) {
             newMtSelected (mountainsArray[j]);
             break;
         }
     }
     
-}
+};
 
 function newMtSelected(mountain) {
     let mtName = document.getElementById("mountainName");
