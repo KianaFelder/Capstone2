@@ -6,27 +6,17 @@ const mountainDropdown = document.getElementById("mountainDropdown");
 window.onload = init;
 
 function init() {
+    displayMountainDropdown();
+    dropdownSelector();
     mountainDropdown.onchange = dropdownSelector;
 };
 
 // Functions to display dropdowns
-function mountainDropdown() {
-    for (let i = 0; i < locationsArray.length; i++) {
-        let parkLocation = locationsArray[i];
-        let option = new Option(parkLocation);
-        locationDropdown.appendChild(option);
-    }
-
-}
-
-
-// Functions to display park type dropdowns
-function displayParkTypeDropdown() {
-
-    for (let i = 0; i < parkTypesArray.length; i++) {
-        let parkType = parkTypesArray[i];
-        let option = new Option(parkType);
-        parkTypeDropdown.appendChild(option);
+function displayMountainDropdown() {
+    for (let i = 0; i < mountainsArray.length; i++) {
+        let optionMountains = mountainsArray[i];
+        let option = new Option(optionMountains);
+        mountainDropdown.appendChild(option);
     }
 
 }
@@ -34,16 +24,27 @@ function displayParkTypeDropdown() {
 
 // Function to handle dropdown selection
 function dropdownSelector() {
-
-    if (locationSearchBtn.checked) {
-        let selectedState = locationDropdown.value;
-        let listOfParks = nationalParksArray.filter(nationalPark => nationalPark.State === selectedState);
-        parkInfoContainer(listOfParks);
-    } else if (parkTypeSearchBtn.checked) {
-        let selectedParkType = parkTypeDropdown.value;
-        let listOfTypesOfParks = nationalParksArray.filter(nationalPark => nationalPark.LocationName.includes(selectedParkType));
-        typeInfoContainer(listOfTypesOfParks);
+    let mtSelection = mountainDropdown.value;
+    for( let j = 0; j < mountainsArray.length; j++) {
+        if (mtSelection = mountainsArray.[j].name) {
+            newMtSelected (mountainsArray[j]);
+            break;
+        }
     }
     
 }
+
+function newMtSelected(mountain) {
+    let mtName = document.getElementById("mountainName");
+    let mtElevation = document.getElementById("elevation");
+    let mtEffort = document.getElementById("effort");
+    let mtInfo = document.getElementById("desc");
+    let mountainImage = document.getElementById("mountainImage");
+    
+    mountainImage.src = "../images/" + mountain.img;
+    mtInfo.innerText = mountain.desc;
+    mtName.innerText = mountain.name;
+    mtElevation.innerText = mountain.elevation;
+    mtEffort.innerText = "Climbing Effect" + mountain.effort;
+
 };
